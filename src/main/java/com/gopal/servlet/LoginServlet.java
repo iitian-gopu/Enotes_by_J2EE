@@ -21,13 +21,15 @@ public class LoginServlet extends HttpServlet {
 		String email=req.getParameter("uemail");
 		String password=req.getParameter("upass");
 		UserDetails ud=new UserDetails();
-		
+	
 		ud.setEmail(email);
 		ud.setPassword(password);
 		UserDao dao=new UserDao(DbConnect.getCon());
-	boolean f=dao.loginUser(ud);
+	UserDetails user=dao.loginUser(ud);
 	
-	if(f) {
+	if(user!=null) {
+		HttpSession ss=req.getSession();
+		ss.setAttribute("user", user);
 		resp.sendRedirect("home.jsp");
 	}
 	else {

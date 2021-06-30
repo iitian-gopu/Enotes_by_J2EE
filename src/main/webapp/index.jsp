@@ -24,7 +24,7 @@
 	
 	<%
 	Connection con=DbConnect.getCon();
-	System.out.println(con);
+	
 	 %>
 	
 	<div class="container-fluid back-img pt-5">

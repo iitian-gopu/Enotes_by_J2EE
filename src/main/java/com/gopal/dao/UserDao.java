@@ -19,7 +19,7 @@ public boolean addUser(UserDetails us) {
 	String	query="insert into user(Name,Email,Password) values(?,?,?)";
 	PreparedStatement ps=con.prepareStatement(query);
 	ps.setString(1, us.getName());
-	ps.setString(2, us.getEamil());
+	ps.setString(2, us.getEmail());
 	ps.setString(3, us.getPassword());
 	int rowcount=ps.executeUpdate();
 	if(rowcount==1) {
@@ -35,23 +35,27 @@ public boolean addUser(UserDetails us) {
 	}
 	return f;
 }
-public boolean loginUser(UserDetails us) {
-	boolean f=false;
+public UserDetails loginUser(UserDetails us) {
+	UserDetails user=null;
 	try {
 		String	query="select * from user where Email=? and  Password=?";
 		PreparedStatement ps=con.prepareStatement(query);
-		ps.setString(1, us.getEamil());
+		ps.setString(1, us.getEmail());
 		ps.setString(2, us.getPassword());
 		ResultSet rs=ps.executeQuery();
 		if(rs.next()) {
-			f=true;
+			user =new UserDetails();
+			user.setId(rs.getInt("id"));
+			user.setName(rs.getString("Name"));
+			user.setEmail(rs.getString("Email"));
+			user.setPassword(rs.getString("Password"));
 		}
 	} catch (Exception e) {
 		// TODO: handle exception
 		e.printStackTrace();
 	}
-	return f;
-	
+
+	return user;
 }
 
 }

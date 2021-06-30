@@ -1,6 +1,13 @@
 package com.gopal.bean;
 
 public class UserDetails {
+	private int id;
+public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 private String name;
 private String email;
 private String password;
@@ -10,7 +17,7 @@ public String getName() {
 public void setName(String name) {
 	this.name = name;
 }
-public String getEamil() {
+public String getEmail() {
 	return email;
 }
 public void setEmail(String emil) {
