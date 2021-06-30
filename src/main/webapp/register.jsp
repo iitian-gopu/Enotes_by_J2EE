@@ -17,24 +17,56 @@
 						<i class="fa fa-user-plus fa-3x" aria-hidden="true"></i>
 						<h4>Registration</h4>
 					</div>
+
+					<%
+					String suc_msg = (String) session.getAttribute("reg_success");
+					if (suc_msg != null) {
+					%>
+
+
+					<div class="alert alert-success" role="alert"><%=suc_msg%>
+						<a href="login.jsp">Click Here To Login</a>
+					</div>
+
+
+
+
+					<%
+					session.removeAttribute("reg_success");
+					}
+					%>
+					<%
+					String fail_msg = (String) session.getAttribute("reg_fail");
+					if (fail_msg != null) {
+					%>
+
+
+					<div class="alert alert-danger" role="alert"><%=fail_msg%></div>
+
+
+
+					<%
+					session.removeAttribute("reg_fail");
+					}
+					%>
 					<div class="card-body">
-						<form>
+						<form action="UserServlet" method="post">
 							<div class="form-group">
 								<label>Enter Name*</label> <input type="text"
 									class="form-control" id="exampleInputEmail1"
-									aria-describedby="emailHelp" placeholder="Name">
+									aria-describedby="emailHelp" placeholder="Name" name="uname">
 
 							</div>
 							<div class="form-group">
 								<label>Enter Email*</label> <input type="email"
 									class="form-control" id="exampleInputEmail1"
-									aria-describedby="emailHelp" placeholder="Email">
+									aria-describedby="emailHelp" placeholder="Email" name="uemail">
 
 							</div>
 							<div class="form-group">
 								<label for="exampleInputPassword1">Enter Password*</label> <input
 									type="password" class="form-control" id="exampleInputPassword1"
-									placeholder="Password">
+									placeholder="Password" name="upass">
 							</div>
 
 							<button type="submit"

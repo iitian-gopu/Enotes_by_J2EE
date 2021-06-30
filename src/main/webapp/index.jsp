@@ -1,3 +1,5 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="com.gopal.db.DbConnect"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -6,7 +8,7 @@
 <style type="text/css">
 .back-img {
 	background: url("img/aaron-burden-xG8IQMqMITM-unsplash.jpg");
-	height: 630px;
+	height: 638px;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -19,6 +21,12 @@
 </head>
 <body>
 	<%@ include file="all_component/Navbar.jsp"%>
+	
+	<%
+	Connection con=DbConnect.getCon();
+	System.out.println(con);
+	 %>
+	
 	<div class="container-fluid back-img pt-5">
 	
 		<div class="text-center ">
