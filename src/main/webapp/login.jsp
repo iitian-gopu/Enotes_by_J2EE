@@ -34,7 +34,26 @@
 					}
 					%>
 
+<%
+String without_login=(String)session.getAttribute("Login-error");
+if(without_login!=null){%>
+	<div class="alert alert-danger" role="alert"><%=without_login%></div>
+<% 
+session.removeAttribute("Login-error");
+}
 
+%>
+<%
+String lgmsg=(String)session.getAttribute("logoutmsg");
+if(lgmsg!=null){%>
+
+<div class="alert alert-success" role="alert"><%=lgmsg%>
+						<a href="login.jsp">Click Here To Login</a>
+					</div>
+<%	
+session.removeAttribute("logoutmsg");
+}
+%>
 
 					<div class="card-body">
 						<form action="LoginServlet" method="post">

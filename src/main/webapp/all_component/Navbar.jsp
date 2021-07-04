@@ -11,14 +11,14 @@
 
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active"><a class="nav-link" href="index.jsp"><i
+			<li class="nav-item active"><a class="nav-link" href="home.jsp"><i
 					class="fa fa-home" aria-hidden="true"></i> Home <span
 					class="sr-only">(current)</span> </a></li>
-			<li class="nav-item"><a class="nav-link" href="#"><i
+			<li class="nav-item"><a class="nav-link" href="addnotes.jsp"><i
 					class="fa fa-plus-circle" aria-hidden="true"></i> Add Notes</a></li>
 
 
-			<li class="nav-item"><a class="nav-link " href="#"><i
+			<li class="nav-item"><a class="nav-link " href="shownotes.jsp"><i
 					class="fa fa-address-book-o" aria-hidden="true"></i> Show Notes</a></li>
 		</ul>
 
@@ -33,7 +33,7 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+						<h5 class="modal-title" id="exampleModalLabel"><%=user.getName()%></h5>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
@@ -80,7 +80,7 @@
 		<a href="" class="btn btn-light my-2 my-sm-0 mr-2" data-toggle="modal"
 			data-target="#exampleModal" type="submit"><i
 			class="fa fa-user-circle-o" aria-hidden="true"></i> <%=user.getName()%></a>
-		<a href="register.jsp" class="btn btn-light my-2 my-sm-0"
+		<a href="LogoutServlet" class="btn btn-light my-2 my-sm-0"
 			type="submit"><i class="fa fa-user-plus" aria-hidden="true"></i>
 			Logout</a>
 		<%
