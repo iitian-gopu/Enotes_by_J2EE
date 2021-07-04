@@ -33,10 +33,20 @@ if (ud == null) {
 
 </head>
 <body>
+<div class="container-fluid">
 	<%@include file="all_component/Navbar.jsp"%>
-
+<%
+String upmsg=(String)session.getAttribute("update");
+if(upmsg!=null){%>
+	
+	<div class="alert alert-success" role="alert"><%=upmsg%></div>
+	
+	
+<% session.removeAttribute("update");
+}
+%>
 	<div class="container">
-		<h2 class="text-center mt-3">
+		<h2 class="text-center mt-3 text-danger">
 			<i class="fa fa-files-o" aria-hidden="true"></i> All Notes
 		</h2>
 		<div class="row">
@@ -47,13 +57,13 @@ if (ud == null) {
 					List<Post> lst = pdao.getData(ud.getId());
 					for (Post po : lst) {
 				%>
-				<div class="card mt-5 border border-danger">
+				<div class="card mt-5 border border-dark">
 					<img alt="" src="img/paper-pencil_icon-icons.com_52928.png"
 						class="card-img-top mt-3 mx-auto" style="max-width: 100px">
 
 					<div class="card-body  p-3">
 
-						<h2 class="card-title text-center"><%=po.getTitle()%></h2>
+						<h2 class="card-title text-primary"><%=po.getTitle()%></h2>
 						<hr class="hro">
 						<p><%=po.getContent()%></p>
 						<p>
@@ -69,7 +79,7 @@ if (ud == null) {
 
 							<a href="DeleteServlet?note_id=" class="btn btn-danger"><i
 								class="fa fa-trash-o" aria-hidden="true"></i> Delete</a> <a
-								href="DeleteServlet?note_id=" class="btn btn-primary"><i
+								href="edit.jsp?note_id=<%=po.getId() %>" class="btn btn-primary"><i
 								class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
 
 						</div>
@@ -83,6 +93,10 @@ if (ud == null) {
 
 			</div>
 		</div>
+	</div>
+	</div>
+	<div class="mt-3">
+	<%@ include file="all_component/footer.jsp"%>
 	</div>
 
 </body>

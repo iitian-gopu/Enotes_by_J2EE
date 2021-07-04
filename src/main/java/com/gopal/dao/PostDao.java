@@ -61,4 +61,46 @@ public List<Post> getData(int id) {
 	return lst;
 	
 }
+public Post getDatabyId(int id) {
+	Post po=null;
+	try {
+		String query="select * from post where id=?";
+		PreparedStatement ps=con.prepareStatement(query);
+		ps.setInt(1, id);
+		ResultSet rs=ps.executeQuery();
+		if(rs.next()) {
+			po=new Post();
+			po.setId(rs.getInt(1));
+			po.setTitle(rs.getString(2));
+			po.setContent(rs.getString(3));
+		}
+	} catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}
+	return po;
+	
+}
+public boolean editNotes(String ti,String cont,int id) {
+	boolean f=false;
+	try {
+	String	query="update post set title=?,content=? where id=?";
+	PreparedStatement ps=con.prepareStatement(query);
+	ps.setString(1,ti );
+	ps.setString(2,cont );
+	ps.setInt(3,id);
+	int rowcount=ps.executeUpdate();
+	if(rowcount==1) {
+		f=true;
+	}
+	else {
+		f=false;
+	}
+	
+	} 
+	catch (Exception e) {
+		e.printStackTrace();
+	}
+	return f;
+}
 }
