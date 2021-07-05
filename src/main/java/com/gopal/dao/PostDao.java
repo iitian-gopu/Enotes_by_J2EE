@@ -103,4 +103,25 @@ public boolean editNotes(String ti,String cont,int id) {
 	}
 	return f;
 }
+public boolean deleteNotes(int id) {
+	boolean f=false;
+	try {
+		String query="delete from post where id=?";
+		PreparedStatement ps=con.prepareStatement(query);
+		ps.setInt(1,id );
+		int rowcount=ps.executeUpdate();
+		if(rowcount==1) {
+			f=true;
+		}
+		else {
+			f=false;
+		
+		}
+		
+	} catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}
+	return f;
+}
 }

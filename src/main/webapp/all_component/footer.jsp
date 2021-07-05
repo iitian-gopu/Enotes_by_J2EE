@@ -1,6 +1,10 @@
 <html>
 <head>
 <style>
+#wrapper {
+  min-height: 100%;
+  position: relative;
+}
 footer {
   text-align: center;
   padding: 3px;
@@ -11,11 +15,11 @@ font-size: 19px;
 </style>
 </head>
 <body>
-
+<div id="wrapper">
 <footer>
   <p>Copyright © IITIAN_GOPU<br>
   <a href="gopal.jaiswal.phe19@itbhu.ac.in">Gopal Jaiswal</a></p>
 </footer>
-
+</div>
 </body>
 </html>
